@@ -1,0 +1,126 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  body {
+    background-color: #ffe6ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    text-align: center;
+    position: relative;
+  }
+  
+  .game-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #ff4b91;
+    padding-bottom: 10px;
+  }
+  
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  
+  .cell {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s;
+  }
+  
+  .cell:hover {
+    transform: scale(1.05);
+  }
+  
+  .cell.x::before,
+  .cell.o::before {
+    position: absolute;
+    font-size: 2.5rem;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .cell.x::before {
+    content: "X";
+    color: #ff4b91;
+  }
+  
+  .cell.o::before {
+    content: "O";
+    color: #2b4aff;
+  }
+  
+  .board.x .cell:not(.x):not(.o):hover::before {
+    content: "X";
+    color: #ff4b91;
+    opacity: 0.3;
+  }
+  
+  .board.o .cell:not(.x):not(.o):hover::before {
+    content: "O";
+    color: #2b4aff;
+    opacity: 0.3;
+  }
+  
+  .game-over {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fff8fa;
+    border: 2px dashed #888;
+    border-radius: 10px;
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+  }
+  
+  .game-over.show {
+    display: block;
+  }
+  
+  #restartButton {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: #ff4b91;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  #restartButton:hover {
+    background-color: #e04383;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
